@@ -6,4 +6,9 @@
     <color name="navy">#2D3D4F</color>
     <color name="blue_55">#3385ff</color>
     <color name="blue_85">#b3d1ff</color>
+
+    <color name="primary_color">#4361EE</color>
+    <color name="black_text">#2A2A2A</color>
+    <color name="light_black_text">#9E9E9E</color>
+    <color name="light_text">#9AACC8</color>
 </resources>
