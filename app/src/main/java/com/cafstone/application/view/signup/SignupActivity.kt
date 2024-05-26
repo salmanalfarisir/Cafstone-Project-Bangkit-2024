@@ -32,9 +32,8 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        @Suppress("DEPRECATION")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        @Suppress("DEPRECATION") if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.show(WindowInsets.Type.statusBars())
         } else {
             window.setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -52,20 +51,12 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
-    private fun setbuttonenabled() {
-        if (
-            binding.nameEditText.text.toString().isNotEmpty() &&
-            (binding.emailEditText.text.toString()
-                .isNotEmpty() && binding.emailEditTextLayout.error == null) &&
-            (binding.passwordEditText.text.toString()
-                .isNotEmpty() && binding.passwordEditTextLayout.error == null) &&
-            (binding.passwordConfirmEditText.text.toString()
-                .isNotEmpty() && binding.passwordConfirmEditTextLayout.error == null)
-        ) {
-            binding.signupButton.isEnabled = true
-        } else {
-            binding.signupButton.isEnabled = false
-        }
+    private fun setButtonEnabled() {
+        binding.signupButton.isEnabled = binding.nameEditText.text.toString()
+            .isNotEmpty() && (binding.emailEditText.text.toString()
+            .isNotEmpty() && binding.emailEditTextLayout.error == null) && (binding.passwordEditText.text.toString()
+            .isNotEmpty() && binding.passwordEditTextLayout.error == null) && (binding.passwordConfirmEditText.text.toString()
+            .isNotEmpty() && binding.passwordConfirmEditTextLayout.error == null)
     }
 
     private fun setupAction() {
@@ -76,14 +67,14 @@ class SignupActivity : AppCompatActivity() {
         binding.passwordConfirmEditText.setTextView(binding.passwordConfirmEditText)
         binding.passwordConfirmEditText.setErrorTextView(binding.passwordConfirmEditTextLayout)
         binding.passwordConfirmEditText.setpasswordTextView(binding.passwordEditText)
-        setbuttonenabled()
+        setButtonEnabled()
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // No action needed
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                setbuttonenabled()
+                setButtonEnabled()
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -107,17 +98,15 @@ class SignupActivity : AppCompatActivity() {
                         if (ds == false) {
                             viewModel.isStatus.observe(this@SignupActivity) { cs ->
                                 if (cs != null) {
-                                    if (cs.error == false) {
+                                    if (!cs.error) {
                                         Toast.makeText(
-                                            this,
-                                            "Register Succesfully",
-                                            Toast.LENGTH_SHORT
+                                            this, "Register Succesfully", Toast.LENGTH_SHORT
                                         ).show()
                                         finish()
                                     } else {
                                         AlertDialog.Builder(this@SignupActivity).apply {
                                             setTitle("Gagal")
-                                            setMessage("${cs.message}")
+                                            setMessage(cs.message)
                                             setNegativeButton("Lanjut") { dialog, _ ->
                                                 dialog.dismiss()
                                             }
@@ -150,13 +139,13 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun playAnimation() {
-        ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_X, -30f, 30f).apply {
+        ObjectAnimator.ofFloat(binding.title, View.TRANSLATION_X, -30f, 30f).apply {
             duration = 6000
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
         }.start()
 
-        val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(100)
+        val title = ObjectAnimator.ofFloat(binding.subTitle, View.ALPHA, 1f).setDuration(100)
         val nameTextView =
             ObjectAnimator.ofFloat(binding.nameTextView, View.ALPHA, 1f).setDuration(100)
         val nameEditTextLayout =
