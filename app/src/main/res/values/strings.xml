@@ -27,4 +27,16 @@
     <string name="full_name">Full Name</string>
     <string name="hint_password_confirm">Password Confirm</string>
     <string name="already_have_an_account">Already Have an Account?</string>
+    <string name="title_activity_onboarding">OnboardingActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="welcome_to2">Harmonizing with Flavor, \nCloser with Distance</string>
+    <string name="welcome_to3">Exploring culinary \ndelights</string>
+
+    <string name="onboarding_text1">Explore Cafes and Restaurants around you,\naccording to your preferences.</string>
+    <string name="onboarding_text2">Experience Perfection in Every Corner of \nthe City with Cafstone Comfort in Your Hand.</string>
+    <string name="onboarding_text3">Explore the Delights of the Culinary \nWorld. Comfort in your hand.</string>
+    <string name="skip">Skip</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
 </resources>

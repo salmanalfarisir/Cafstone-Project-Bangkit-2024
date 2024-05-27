@@ -19,8 +19,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_person_width" />
-                            <entry key="sourceFile" value="$USER_HOME$/Downloads/charm--person.svg" />
+                            <entry key="outputName" value="ep__arrow_right_bold" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/ep--arrow-right-bold.svg" />
                           </map>
                         </option>
                       </PersistentState>
